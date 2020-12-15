@@ -19,7 +19,7 @@
         <div class="row custom-gutter">
           <div class="col">
             <div class="nav">
-              <li>商品名</li>
+              <li>商品</li>
               <li>单价</li>
               <li>数量</li>
               <li>总价</li>
@@ -35,7 +35,7 @@
                   <tr v-for="(item, index) of productlist" :key="index">
                     <!-- 删除商品 -->
                     <td class="cart-product-remove">
-                      <i class="ti-trash" @click="deleteproduct"></i>
+                      <i class="ti-trash" @click="deleteproduct(index)"></i>
                     </td>
                     <!-- 商品名 -->
                     <td class="cart-product-title">
@@ -148,7 +148,21 @@ export default {
   methods: {
     // 删除商品
     deleteproduct(index){
-      this.productlist.splice(index,1)
+      let obj=this.productlist[index];
+      let productlist=this.qs.stringify({
+        pname:obj.pname,
+        price:obj.price,
+        count:obj.count
+      });
+      // console.log(obj);
+      this.axios.post("delectproduct",productlist).then(res=>{
+        if(res.data.code=1){
+          this.$message.success("删除成功");
+          // 刷新页面
+          this.$router.go(0);
+        }
+      })
+      // this.productlist.splice(index,1)
     }
   },
   mounted() {

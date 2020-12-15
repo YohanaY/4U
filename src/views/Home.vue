@@ -4,18 +4,17 @@
     <el-carousel
       height="900px"
       indicator-position="none"
-      arrow="always"
-      :autoplay="false"
-      class="margin-bottom-120"
+      :autoplay="true"
+      class="mb-5"
     >
       <el-carousel-item v-for="(item, index) in imgList" :key="index">
         <img :src="item.url" />
       </el-carousel-item>
     </el-carousel>
     <div class="container">
-    <!-- 关于花语 -->
+      <!-- 关于花语 -->
       <div class="row custom-gutter">
-        <div class="col">
+        <div class="col-md-6">
           <div class="section-title-area">
             <div class="section-title section-title-2">
               <div class="icon">
@@ -46,19 +45,20 @@
             >
             <p>代表着重生的爱。忘记过去的悲伤，开始崭新的爱。</p>
           </div>
-          <div class="btn-wrapper margin-top-30">
+          <div class="btn-wrapper margin-top-30 mb-5">
             <a class="boxed-btn btn-rounded" href="#">了解更多</a>
           </div>
         </div>
-        <div class="col margin-bottom-120">
-          <div class="custom-content-image text-right">
+        <div class="col-md-6">
+          <div class="custom-content-image">
             <div class="img-shape">
               <img src="../assets/img/others/4.jpg" alt="" />
             </div>
           </div>
         </div>
       </div>
-      <!-- 服务介绍 -->
+      <!-- 关于服务 -->
+      <!-- 标题 -->
       <div class="col margin-bottom-70">
         <div class="text-center">
           <div class="section-title section-title-2">
@@ -71,8 +71,9 @@
           </div>
         </div>
       </div>
+      <!-- 介绍 -->
       <div class="row custom-gutter">
-        <div class="col">
+        <div class="col-md-3">
           <div class="service-item text-center">
             <div class="service-icon">
               <img src="../assets/img/icon/service-1.svg" alt="" />
@@ -85,7 +86,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-3">
           <div class="service-item text-center">
             <div class="service-icon">
               <img src="../assets/img/icon/service-2.svg" alt="" />
@@ -96,7 +97,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-3">
           <div class="service-item text-center">
             <div class="service-icon">
               <img src="../assets/img/icon/service-3.svg" alt="" />
@@ -107,7 +108,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-3">
           <div class="service-item text-center">
             <div class="service-icon">
               <img src="../assets/img/icon/service-4.svg" alt="" />
@@ -119,14 +120,25 @@
           </div>
         </div>
       </div>
-    </div> 
-    <!-- 返回顶端 -->
-    <div class="back-to-top">
-      <span class=""><i class="fa fa-long-arrow-up"></i></span>
+      <!-- 返回顶端 -->
+      <div class="backtotop">
+          <a href="#"><i class="fa fa-arrow-up"></i></a>
+      </div>
     </div>
   </div>
 </template>
 <style scoped>
+.backtotop {
+  width: 40px;
+  height: 40px;
+  background-color: #bd6f51;
+  border-radius:0 5px 0 5px;
+  padding: 10px;
+}
+.backtotop:hover{
+  transition: all 0.3s ease-in;
+  background-color: #c18d7a;
+}
 </style>
 <script>
 export default {

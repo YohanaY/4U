@@ -14,14 +14,7 @@ export default new Vuex.Store({
         //存储登录用户的相关信息
         userInfo: JSON.parse(localStorage.getItem('userInfo')) || {},
         // 购物车商品
-        productlist: [
-            {
-                pname: 'qq',
-                price: '99',
-                count:1
-            }
-
-        ]
+        // productlist: []
     },
     // 修改state中共享状态的操作方法
     mutations: {
@@ -42,9 +35,9 @@ export default new Vuex.Store({
         },
         // 添加商品
         // payload称为载荷,实际上就是需要传递的额外的参数,可以为任意数据类型
-        addproduct_mutations(state, payload) {
-            state.productlist.push(payload);
-        }
+        // addproduct_mutations(state, payload) {
+        //     state.productlist.push(payload);
+        // }
     },
     actions: {
         // 用户登录异步请求
@@ -65,22 +58,23 @@ export default new Vuex.Store({
                 }
             });
         },
+
         // 添加商品异步请求
-        addproduct_action(context, payload) {
-            // 向服务器发送异步请求
-            // 将数据添加到数据库
-            axios.get('/addproduct', payload).then(res => {
-                if (res.data.code == 1) {
-                    // 提交mutations
-                    context.commit('addproduct_mutations', res.data.results);
-                    // 将商品数据保存到localstorage中
-                    // webstorage键值只能是字符串
-                    localStorage.setItem('productlist', JSON.stringify(res.data.results));
-                    // 提示添加商品状态
-                    MessageBox('添加成功')
-                }
-            })
-        }
+        // addproduct_action(context, payload) {
+        //     // 向服务器发送异步请求
+        //     // 将数据添加到数据库
+        //     axios.get('/addproduct', payload).then(res => {
+        //         if (res.data.code == 1) {
+        //             // 提交mutations
+        //             context.commit('addproduct_mutations', res.data.results);
+        //             // 将商品数据保存到localstorage中
+        //             // webstorage键值只能是字符串
+        //             localStorage.setItem('productlist', JSON.stringify(res.data.results));
+        //             // 提示添加商品状态
+        //             MessageBox('添加成功')
+        //         }
+        //     })
+        // }
     },
     modules: {
     }

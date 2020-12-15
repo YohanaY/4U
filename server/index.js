@@ -131,19 +131,37 @@ server.get("/cart", (req, res) => {
     })
 })
 
-//添加商品路由
-// server.get("/addproduct", (req, res) => {
-//     let pname=req.body.pname;
-//     let price=req.body.price;
-//     let count=req.body.count;
-//     // 向数据库添加商品
-//     let sql = "INSERT INTO 4u_shop_cart(pname,price,count) VALUES(?) "
-//     pool.query(sql, [pname,price,count], (err, results) => {
-//         if (err) throw err;
-//         // 插入数据
-//         res.send({ message: '添加成功', code: 1, results: results })
-//     })
-// })
+//添加商品
+server.post("/addproduct", (req, res) => {
+    // 获取前台数据，解析为对象
+    let productlist = req.body;
+    let pname = productlist.pname;
+    let price = productlist.price;
+    let count = productlist.count;
+    // 向数据库添加商品
+    let sql = "INSERT INTO 4u_shop_cart(pname,price,count) VALUES(?,?,?) "
+    pool.query(sql, [pname, price, count], (err, results) => {
+        if (err) throw err;
+        // 插入数据
+        res.send({ message: '添加成功', code: 1 })
+    })
+})
+
+// 购物车删除商品
+server.post("/delectproduct", (req, res) => {
+    // 获取数据
+    let productlist = req.body;
+    let pname = productlist.pname;
+    // let price=productlist.price;
+    // let count=productlist.count;
+    // 删除商品
+    let sql = "DELETE FROM 4u_shop_cart WHERE pname=?";
+    pool.query(sql, [pname], (err, results) => {
+        if (err) throw err;
+        res.send({ message: '删除成功', code: 1 })
+    })
+})
+
 
 
 // 指定web服务器监听的端口

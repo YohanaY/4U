@@ -18,14 +18,11 @@
           </div>
         </div>
       </div>
-      <div
-        class="instafeed instagram-inner"
-        data-limit="5"
-      >
+      <div class="instafeed instagram-inner" data-limit="5">
         <ul id="instagram_feed"></ul>
       </div>
     </div>
-    <!-- Instagram area 结束 -->
+    <!-- 底部信息 -->
     <div class="myfoo">
       <!-- footer -->
       <footer class="footer-area">
@@ -33,11 +30,11 @@
           <div class="container">
             <div class="row">
               <!-- footer-1 logo-->
-              <div class="col">
+              <div class="col-md-3">
                 <div class="footer-widget widget">
                   <div class="about_us_widget">
                     <a href="#" class="footer-logo">
-                      <img src="../assets/img/footer-logo.png" alt=""/>
+                      <img src="../assets/img/footer-logo.png" alt="" />
                     </a>
                     <p>鲜花总是让人更好、更快乐，它们是心灵的阳光和良药。</p>
                     <div class="social_share">
@@ -52,10 +49,8 @@
                 </div>
               </div>
               <!-- footer-2 工作时间-->
-              <div class="col">
-                <div
-                  class="footer-widget widget"
-                >
+              <div class="col-md-2">
+                <div class="footer-widget widget">
                   <h4 class="widget-title">工作时间</h4>
                   <p>
                     周一~周五: 9:00-16:00 <br />
@@ -65,10 +60,8 @@
                 </div>
               </div>
               <!-- footer-3 支持 -->
-              <div class="col">
-                <div
-                  class="footer-widget widget"
-                >
+              <div class="col-md-2">
+                <div class="footer-widget widget">
                   <h4 class="widget-title">支持</h4>
                   <ul>
                     <li><a href="#">团队订购</a></li>
@@ -79,10 +72,8 @@
                 </div>
               </div>
               <!-- footer-4 关于我们 -->
-              <div class="col">
-                <div
-                  class="footer-widget widget"
-                >
+              <div class="col-md-2">
+                <div class="footer-widget widget">
                   <h4 class="widget-title">关于我们</h4>
                   <ul>
                     <li><a href="#">品牌故事</a></li>
@@ -93,7 +84,7 @@
                 </div>
               </div>
               <!-- footer-5 联系我们 -->
-              <div class="col">
+              <div class="col-md-3">
                 <div class="footer-widget widget">
                   <div class="newsletter-widget">
                     <h4 class="widget-title">联系我们</h4>

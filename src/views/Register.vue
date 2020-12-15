@@ -143,10 +143,7 @@ export default {
         };
         this.axios.post("/register", this.qs.stringify(object)).then((res) => {
           if (res.data.code == 1) {
-            this.$message({
-              message: "注册成功",
-              type: "success",
-            });
+            this.$message.success( "注册成功");
             this.$router.push("/");
           } else {
             this.$message.error("注册失败");

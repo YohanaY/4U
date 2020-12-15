@@ -41,7 +41,9 @@
           <h3>{{ detail.pname }}</h3>
         </div>
         <!-- 商品价格 -->
-        <h4><span>￥{{ detail.price }}</span></h4>
+        <h4>
+          <span>￥{{ detail.price }}</span>
+        </h4>
         <!-- 商品细节描述 -->
         <p class="product-details">{{ detail.details }}</p>
         <!-- 商品数量 -->
@@ -55,15 +57,11 @@
         </div>
         <!-- 添加按钮 -->
         <div class="btn-wrapper">
-          <button class="boxed-btn btn-rounded" @click="addproduct(index)">
-            添加购物车
-          </button>
+          <button class="boxed-btn btn-rounded" @click="addproduct">添加购物车</button>
         </div>
         <!-- 继续购物按钮 -->
         <div class="btn-wrapper mr-5">
-          <router-link to="/shop" class="boxed-btn btn-rounded">
-            继续购物
-          </router-link >
+          <router-link to="/shop" class="boxed-btn btn-rounded"> 继续购物 </router-link>
         </div>
       </div>
     </div>
@@ -88,13 +86,13 @@
   margin: 10px;
   width: 600px;
 }
-.product-content{
+.product-content {
   width: 650px;
 }
-.product-title{
+.product-title {
   margin: 24px 0;
 }
-.product-details{
+.product-details {
   margin: 24px 0;
 }
 </style>
@@ -103,35 +101,44 @@
 export default {
   data() {
     return {
+      // 商品详细信息
       detail: [],
+      // 商品数量初始值
       num: 1,
-      productlist:[]
     };
   },
   methods: {
     // 详情页放大图(替换、可优化)
     handle1() {
-      let d1=document.getElementById('d1');
-      let d4=document.getElementById('d4');
-      d4.src=d1.src;
+      let d1 = document.getElementById("d1");
+      let d4 = document.getElementById("d4");
+      d4.src = d1.src;
     },
     handle2() {
-      let d2=document.getElementById('d2');
-      let d4=document.getElementById('d4');
-      d4.src=d2.src;
+      let d2 = document.getElementById("d2");
+      let d4 = document.getElementById("d4");
+      d4.src = d2.src;
     },
     handle3() {
-      let d3=document.getElementById('d3');
-      let d4=document.getElementById('d4');
-      d4.src=d3.src;
+      let d3 = document.getElementById("d3");
+      let d4 = document.getElementById("d4");
+      d4.src = d3.src;
     },
-    // handlechange(){} 
-    addproduct(index){
-      let obj=this.detail[index];
-      let count=this.num;
-      this.productlist.push(pname,price,count)
+  // 添加商品
+    addproduct() {
+      let obj = this.detail;
+      let productlist =this.qs.stringify( {
+        pname: obj.pname,
+        price: obj.price,
+        count: this.num,
+      });
+      this.axios.post("/addproduct",productlist).then(res=>{
+        if(res.data.code=1){
+          this.$message.success("添加成功")
+        }
+      });
       // this.$store.dispatch('addproduct_action', obj);
-    }
+    },
   },
   mounted() {
     let pid = this.$route.params.pid;
